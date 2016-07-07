@@ -1,20 +1,23 @@
 ﻿#pragma once
-
 #include <vector>
+#include <string>
 
 class rod
 {
 private:
-	std::vector<uint8_t> disks;
+	std::vector<uint16_t> disks;
+	std::string str_rep;
+	bool dirty = true;
 public:
 	rod();
-	uint8_t size() const;
+	uint16_t size() const;
 	bool empty() const;
-	uint8_t top() const;
-	bool push(uint8_t new_disk);
+	uint16_t top() const;
+	bool push(uint16_t new_disk);
 	bool pop();
-	uint8_t operator[] (int x) const;
-	uint8_t at(int i) const;
+	uint16_t operator[] (int x) const;
+	explicit operator std::string();
+	uint16_t at(int i) const;
 
 	static rod *get_filled_rod(int disk_number);
 };

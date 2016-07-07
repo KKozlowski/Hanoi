@@ -8,9 +8,7 @@ using namespace std;
 
 void main(int argc, char* argv[])
 {
-	cout <<  "Hello world";
-
-	uint8_t disk_count = 3;
+	uint16_t disk_count = 3;
 
 	if (argc > 1)
 	{
@@ -27,7 +25,7 @@ void main(int argc, char* argv[])
 				return;
 			}
 
-			disk_count = static_cast<uint8_t>(probe_disk_count);
+			disk_count = static_cast<uint16_t>(probe_disk_count);
 				
 		} else if (s == "help")
 		{
@@ -36,9 +34,7 @@ void main(int argc, char* argv[])
 		}
 	}
 
-	cout << "DISK COUNT: " << disk_count << endl;
 	hanoi h(disk_count);
 
-	cout << endl;
 	cin.get();
 }
