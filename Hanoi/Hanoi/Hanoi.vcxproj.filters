@@ -32,5 +32,8 @@
     <ClInclude Include="rod.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="extensions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

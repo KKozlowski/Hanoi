@@ -4,13 +4,23 @@
 #include <iomanip>
 #include <sstream>
 
-hanoi::hanoi(uint16_t disc_count)
+hanoi::hanoi(uint16_t disc_count, uint16_t source)
 {
 	this->disk_count = disc_count;
+	this->max_disk_number = disc_count - 1;
 	std::cout << "DISK COUNT ..: " << disk_count << std::endl;
-	rods[0] = rod::get_filled_rod(disk_count);
-	rods[1] = new rod();
-	rods[2] = new rod();
+
+	if (source < 0) source = 0;
+	else if (source > 2) source = 2;
+
+	source_number = source;
+
+	std::cout << "SOURCE NUMBER ..: " << source_number << std::endl;
+
+	for (int i = 0;i <= 2;i++)
+	{
+		rods[i] = (i == source) ? rod::get_filled_rod(disk_count) : new rod();
+	}
 
 	std::cout << print_to_string();
 }
