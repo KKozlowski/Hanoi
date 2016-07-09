@@ -149,11 +149,13 @@
     <ClCompile Include="hanoi.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="rod.cpp" />
+    <ClCompile Include="solver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="extensions.h" />
     <ClInclude Include="hanoi.h" />
     <ClInclude Include="rod.h" />
+    <ClInclude Include="solver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

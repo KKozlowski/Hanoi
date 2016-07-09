@@ -24,6 +24,9 @@
     <ClCompile Include="rod.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="solver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="hanoi.h">
@@ -33,6 +36,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="extensions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="solver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
