@@ -13,6 +13,7 @@ void main(int argc, char* argv[])
 	uint16_t disk_count = 3;
 	uint16_t source_rod = 0;
 	uint16_t dest_rod = 2;
+	bool printing = true;
 	if (argc > 1)
 	{
 		uint16_t nums[3] = { 0 };
@@ -25,8 +26,8 @@ void main(int argc, char* argv[])
 			succs[2] = try_get_uint16_from_chars(argv[3], nums[2]);
 
 		if (succs[0]){
-			if (nums[0] > 255){
-				cout << "Nope";
+			if (nums[0] > 31){
+				cout << "Too many disks.";
 				return;
 			}
 			disk_count = nums[0];
@@ -41,21 +42,35 @@ void main(int argc, char* argv[])
 			}
 		} else if (*argv[1] == 'h' || *argv[1] == 'H')
 		{
-			cout << "HELP\n";
+			cout << "This program solves Towers of Hanoi puzzle with given parameters.\n\n"
+				<< "Usage: Hanoi [n] [s] [d] [silent]\n\n"
+				<< "n  -  number of disks in the puzzle, from 0 to 31 (defaulf: 3)\n"
+				<< "s  -  number of the source rod, from 0 to 2 (default: 0)\n"
+				<< "d  -  number of the destination rod, from 0 to 2 (default: 2)\n"
+				<< "silent  -  if any of arguments is a letter 's', or a word starting with 's'\n"
+				<< "           (eg. 'silent'), the program doesn't print the solution step\n"
+				<< "           by step, but shows time statistics instead\n\n"
+				<< "Examples:\n * Hanoi 3 0 2 s\n * Hanoi 3 1\n * Hanoi s\n * Hanoi 5 s\n * Hanoi 4 1 0\n";
 			return;
 		}
+
+		for (int i = 1; i < argc;i++)
+			if (*argv[i] == 's')
+			{
+				printing = false;
+				break;
+			}
 	}
 
 	hanoi h(disk_count, source_rod);
-	solver s;
+	solver s(printing);
 
 	std::cout << "DISK COUNT: " << h.get_disk_count() << std::endl;
 	std::cout << "SOURCE ROD: " << h.get_source_number() << std::endl;
-	std::cout << "DESTINATION ROD: " << dest_rod << std::endl << std::endl;
+	std::cout << "DESTINATION ROD: " << dest_rod << std::endl;
+	std::cout << "PRINTING TO CONSOLE: " << (printing ? "true" : "false") << std::endl << std::endl;
 
 	std::cout << h.print_to_string() << endl;
 
 	s.solve(h, dest_rod);
-
-	cin.get();
 }
